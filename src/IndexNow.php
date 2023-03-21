@@ -15,6 +15,7 @@ use function json_encode;
 use const JSON_THROW_ON_ERROR;
 use const JSON_UNESCAPED_SLASHES;
 use const JSON_UNESCAPED_UNICODE;
+use const PHP_QUERY_RFC3986;
 
 class IndexNow
 {
@@ -67,7 +68,7 @@ class IndexNow
             'url' => $url,
         ];
 
-        $params = http_build_query($payload);
+        $params = http_build_query($payload, '', null, PHP_QUERY_RFC3986);
         $request = $this->createRequest('GET', "https://{$this->searchEngine}/indexNow?{$params}");
         $request = $this->appendDefaultRequestHeaders($request);
 
