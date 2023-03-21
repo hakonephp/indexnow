@@ -62,9 +62,9 @@ class IndexNow
     public function submitUrl(string $host, string $key, string $url): HttpResponse
     {
         $payload = [
-            "host" => $host,
-            "key" => $key,
-            "url" => $url,
+            'host' => $host,
+            'key' => $key,
+            'url' => $url,
         ];
 
         $params = http_build_query($payload);
@@ -86,9 +86,9 @@ class IndexNow
     public function submitList(string $host, string $key, array $urlList, ?string $keyLocation = null): HttpResponse
     {
         $payload = [
-            "host" => $host,
-            "key" => $key,
-            "urlList" => $urlList,
+            'host' => $host,
+            'key' => $key,
+            'urlList' => $urlList,
         ];
 
         if ($keyLocation !== null) {
