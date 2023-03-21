@@ -1,0 +1,33 @@
+{
+    "name": "hakone/indexnow",
+    "description": "An IndexNow client implementation based on PSR-17",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=7.3",
+        "php-http/discovery": "^1.15",
+        "psr/http-client": "^1.0"
+    },
+    "require-dev": {
+        "kriswallsmith/buzz": "^1.2",
+        "nyholm/psr7": "^1.5",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^9.6",
+        "symplify/easy-coding-standard": "^11.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hakone\\IndexNow\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hakone\\IndexNow\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
