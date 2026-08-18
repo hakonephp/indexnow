@@ -1,8 +1,20 @@
 # IndexNow Client for PHP 🏃‍♀️
 
+[![Package version](https://img.shields.io/packagist/v/hakone/indexnow.svg?style=flat)](https://packagist.org/packages/hakone/indexnow)
+[![Build Status](https://github.com/hakonephp/indexnow/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/hakonephp/indexnow/actions)
+[![Downloads this Month](https://img.shields.io/packagist/dm/hakone/indexnow.svg)](https://packagist.org/packages/hakone/indexnow)
+
 **hakone/indexnow** is an [IndexNow] client implementation based on [PSR-17] and [HTTPlug Discovery].
 
-## How to use
+The HTTP client is not hardcoded. Pass any [PSR-18] client, or let HTTPlug Discovery pick one from the project.
+
+## Install
+
+```
+composer require hakone/indexnow
+```
+
+## Usage
 
 ```php
 use Hakone\IndexNow\IndexNow;
@@ -42,5 +54,6 @@ limitations under the License.
 ```
 
 [PSR-17]: https://www.php-fig.org/psr/psr-17/
+[PSR-18]: https://www.php-fig.org/psr/psr-18/
 [IndexNow]: https://www.indexnow.org/
 [HTTPlug Discovery]: https://github.com/php-http/discovery
