@@ -17,7 +17,7 @@ use const JSON_UNESCAPED_SLASHES;
 use const JSON_UNESCAPED_UNICODE;
 use const PHP_QUERY_RFC3986;
 
-class IndexNow
+readonly class IndexNow
 {
     protected const MESSAGES = [
         400 => 'IndexNow Bad Request: Invalid format',
