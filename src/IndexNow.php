@@ -19,18 +19,6 @@ use const PHP_QUERY_RFC3986;
 
 class IndexNow
 {
-    /** @var HttpClient */
-    private $httpClient;
-
-    /** @var non-empty-string */
-    private $searchEngine;
-
-    /** @var array<key-of<self::MESSAGES>, string> */
-    private $messages;
-
-    /** @var string */
-    private $unexpectedMessage;
-
     protected const MESSAGES = [
         400 => 'IndexNow Bad Request: Invalid format',
         403 => 'IndexNow Forbidden: In case of key not valid (e.g. key not found, file found but key not in the file)',
@@ -44,12 +32,12 @@ class IndexNow
      * @param non-empty-string $searchEngine
      * @param array<key-of<self::MESSAGES>, string> $messages
      */
-    public function __construct(HttpClient $httpClient, string $searchEngine = 'www.bing.com', array $messages = self::MESSAGES, string $unexpectedMessage = self::UNEXPECTED_MESSAGE)
-    {
-        $this->httpClient = $httpClient;
-        $this->searchEngine = $searchEngine;
-        $this->messages = $messages;
-        $this->unexpectedMessage = $unexpectedMessage;
+    public function __construct(
+        private HttpClient $httpClient,
+        private string $searchEngine = 'www.bing.com',
+        private array $messages = self::MESSAGES,
+        private string $unexpectedMessage = self::UNEXPECTED_MESSAGE
+    ) {
     }
 
     /**
