@@ -10,8 +10,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestInterface as HttpRequest;
-use Psr\Http\Message\ResponseInterface as HttpResponse;
 
 #[CoversClass(IndexNow::class)]
 #[UsesClass(IndexNowException::class)]
@@ -100,37 +98,7 @@ final class IndexNowTest extends TestCase
     public function test_subclass_can_customize_protected_request_hooks(): void
     {
         $http = $this->clientWithStatus(200);
-        $subject = new readonly class($http) extends IndexNow {
-            #[\NoDiscard]
-            protected function createRequest(string $method, string $url): HttpRequest
-            {
-                return parent::createRequest($method, $url)
-                    ->withHeader('X-Hook-Create', '1');
-            }
-
-            #[\NoDiscard]
-            protected function appendDefaultRequestHeaders(HttpRequest $request): HttpRequest
-            {
-                return parent::appendDefaultRequestHeaders($request)
-                    ->withHeader('X-Hook-Headers', '1');
-            }
-
-            /**
-             * @param array<string, mixed> $payload
-             */
-            #[\NoDiscard]
-            protected function appendJsonPayload(HttpRequest $request, array $payload): HttpRequest
-            {
-                return parent::appendJsonPayload($request, $payload)
-                    ->withHeader('X-Hook-Json', '1');
-            }
-
-            protected function sendRequest(HttpRequest $request): HttpResponse
-            {
-                return parent::sendRequest($request)
-                    ->withHeader('X-Hook-Send', '1');
-            }
-        };
+        $subject = new HookedIndexNow($http);
 
         $response = $subject->submitList('www.example.com', 'secret', ['https://www.example.com/url1']);
 
