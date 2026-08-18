@@ -91,13 +91,13 @@ readonly class IndexNow
         return $this->sendRequest($request);
     }
 
-    /** @pure */
+    #[\NoDiscard]
     protected function createRequest(string $method, string $url): HttpRequest
     {
         return Psr17FactoryDiscovery::findRequestFactory()->createRequest($method, $url);
     }
 
-    /** @pure */
+    #[\NoDiscard]
     protected function appendDefaultRequestHeaders(HttpRequest $request): HttpRequest
     {
         return $request
@@ -105,9 +105,9 @@ readonly class IndexNow
     }
 
     /**
-     * @pure
      * @param array<string, mixed> $payload
      */
+    #[\NoDiscard]
     protected function appendJsonPayload(HttpRequest $request, array $payload): HttpRequest
     {
         $json = json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
