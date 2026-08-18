@@ -3,7 +3,7 @@
     "description": "An IndexNow client implementation based on PSR-17",
     "license": "Apache-2.0",
     "require": {
-        "php": ">=7.3",
+        "php": "^8.2",
         "php-http/discovery": "^1.15",
         "psr/http-client": "^1.0"
     },
